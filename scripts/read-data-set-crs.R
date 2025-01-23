@@ -1,29 +1,39 @@
-# ---- load required libraries -------------------------------------------------
-
-library(readr)
-library(sf)
-library(dplyr)
-library(ggplot2)
-library(tmap)
-
 # ---- Read in the data --------------------------------------------------------
 
-## Read the data ----
-haiti_hf <- read_csv(
+## Haiti health centers ----
+haiti_hc <- read_csv(
   file = "data/haiti/haiti-healthsites.csv"
 )
 
-## Set the data as a Simple Feature object ----
-haiti_hf <- st_as_sf(
-  x = haiti_hf, 
+## Haiti shape files ----
+haiti_adm2 <- st_read(dsn = "data/haiti/adm2.shp")
+
+## Haiti's rivers ----
+river_shp <- st_read(dsn = "data/haiti/rivers.shp")
+
+
+# ---- Set CRS and Reproject  --------------------------------------------------
+
+## Set the Haiti's health center data as a simple feature object ----
+haiti_hc <- st_as_sf(
+  x = haiti_hc, 
   coords = c("x", "y")
 )
 
-## Set the Coordinate Reference System (CRS) ----
-haiti_hf <- st_set_crs(
-  x = haiti_hf, 
+## Set the geographic Coordinate Reference System (CRS) ----
+haiti_hc <- st_set_crs(
+  x = haiti_hc, 
   value = 4326
 )
 
-## Read in the shape files ----
-haiti_shp <- st_read(dsn = "data/haiti/adm2.shp")
+## Transform the geographic CRS into Haiti's local UTM  ----
+haiti_hc_utm <- st_transform(
+  x = haiti_hc, 
+  crs = 32618
+)
+
+## Transform Haiti's shapefiles into UTM ----
+haiti_adm2 <- st_transform(
+  x = haiti_shp,
+  crs = 32618
+)
