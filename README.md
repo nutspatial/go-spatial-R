@@ -29,10 +29,10 @@ The repository was created in R version 4.4.2, and the following dependencies we
 * `{readr}` version 2.1.5
 * `{dplyr}` version 1.1.4
 * `{ggplot2}` version 3.5.1
-* `{sf}` version 1.0-19
+* `{sf}` version 1.0-19              <https://r-spatial.github.io/sf/>
 * `{terra}` version 1.8-10
 * `{mgcv}` version 1.9-1
-* `{mapview}` version 2.11.2
+* `{mapview}` version 2.11.2         <https://r-spatial.github.io/mapview/articles/>
 * `{spatstat}` version 3.3-0
 * `{sparr}` version 2.3-15
 * `{raster}` version 3.6-31
@@ -40,6 +40,13 @@ The repository was created in R version 4.4.2, and the following dependencies we
 * `{spdep}` version 1.3-9
 * `{sp}` version 2.1-4
 * `{sparr}` version 2.3-15
+* `{tmap}` version 3.3-4              <https://r-tmap.github.io/tmap/>
 
 # License
 This repository is licensed under a GNU General Public License 3 (GPL-3).
+
+# Useful resources to read 
+
++ [Spatial Data Science With Application in R](https://r-spatial.org/book/)
++ [Spatial analysis in R](https://isair2025.netlify.app/02_intro_spatial/notes/intro_spatial_notes.pdf)
++ [Geocomputation with R](https://r.geocompx.org)
