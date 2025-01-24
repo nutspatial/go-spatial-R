@@ -166,4 +166,46 @@ west_haiti |>
   ggplot() +
   geom_sf()
 
-################################## DISTANCES ###################################
+############################ CALCULATING DISTANCES #############################
+
+# ---- Distance to a single point ----------------------------------------------
+
+## Calculate distances from the capital of Haiti to health centers ----
+hc_dist <- st_distance(
+  x = haiti_capital, 
+  y = st_transform(haiti_hc, 32618)
+) |> 
+  as.vector()
+
+## Add distances to the data.frame ----
+haiti_hc$hcdist <- hc_dist
+
+## Find the closest distance to a health facility from the capital ----
+min(haiti_hc$hcdist)
+
+## Find the corresponding health facility ----
+haiti_hc |> 
+  subset(hcdist == min(hcdist)) |> ## Returns the health center and all its attributes
+  select(name) # Returns just the health center and the GPS
+
+
+# ---- Distance to multiple points ---------------------------------------------
+## The example below uses centroids as the reference point. It could be any thing else.
+## It could be a health center to another health center, etc. 
+
+x <- do.call(
+  what = st_distance,
+  args = list(centroids, st_transform(haiti_hc, 32618)
+  )
+)
+
+## Find the nearest centroid ----
+do.call(
+  what = min, 
+  args = list(x[, 1])
+)
+
+do.call(
+  what = min, 
+  args = list(x[2,])
+)
