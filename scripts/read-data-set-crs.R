@@ -11,6 +11,9 @@ haiti_adm2 <- st_read(dsn = "data/haiti/adm2.shp")
 ## Haiti's rivers ----
 river_shp <- st_read(dsn = "data/haiti/rivers.shp")
 
+## Load data point for capital
+haiti_capital <- st_read('data/haiti/capital.shp')
+
 
 # ---- Set CRS and Reproject  --------------------------------------------------
 
@@ -34,6 +37,6 @@ haiti_hc_utm <- st_transform(
 
 ## Transform Haiti's shapefiles into UTM ----
 haiti_adm2 <- st_transform(
-  x = haiti_shp,
+  x = haiti_adm2,
   crs = 32618
 )

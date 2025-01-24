@@ -76,7 +76,7 @@ haiti_adm2 |>
 tmap_mode(mode = "plot")
 
 ## Cloropleth map of Nippes Haiti ----
-Nippes_Haity <- haiti_shp |> 
+Nippes_Haity <- haiti_adm2 |> 
   filter(adm1_en == "Nippes") |> 
   tm_shape() +
   tm_polygons(
@@ -86,7 +86,7 @@ Nippes_Haity <- haiti_shp |>
   )
 
 ## Cloropleth map of Nippes Haiti by location of residence ----
-haiti_shp |> 
+haiti_adm2 |> 
   filter(adm1_en == "Nippes") |> 
   tm_shape() +
   tm_polygons(
@@ -101,12 +101,12 @@ haiti_shp |>
 # ---- Interactive maps with `{mapview}` ----------------------------------------
 
 ## Plot iterative map ----
-haiti_shp |> 
+haiti_adm2 |> 
   mapview() +
   mapview(haiti_hc_utm, col.regions = "red")
 
 ## Plot iterative map ----
-haiti_shp |> 
+haiti_adm2 |> 
   filter(adm1_en == "Centre") |> 
   mapview() +
   mapview(
