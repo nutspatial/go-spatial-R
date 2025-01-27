@@ -10,6 +10,7 @@ library(ggplot2)
 library(tmap)
 library(ggspatial)
 library(mapview)
+library(scales)
 
 # ---- Data wrangling ----------------------------------------------------------
 source("scripts/read-data-set-crs.R")
