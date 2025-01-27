@@ -1,3 +1,7 @@
+---
+format: gfm
+---
+
 # Go Spatial: An Implementation of Spatial Analysis using R
 
 This repository contains practical exercises on spatial analysis with implementation
